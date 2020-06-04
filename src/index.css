@@ -1,0 +1,11 @@
+#app {
+  font-family: monospace;
+  font-size: 21px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+li {
+  cursor: pointer;
+  -webkit-user-select: none;
+}
