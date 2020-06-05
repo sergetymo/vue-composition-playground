@@ -1,1 +1,5 @@
-# vue3-ui
+Playing with Vue Composition API.
+
+```
+$ yarn dev
+```

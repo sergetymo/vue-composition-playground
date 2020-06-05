@@ -1,24 +1,36 @@
 <template>
   <div>
-    <span>{{state.current}}</span>
+    App. Single: {{single}}. Multi: {{multi}}
     <hr>
-    <Select v-model="state.current" :values="values" />
+    <SingleChoiceControl :values="values" v-model="single" />
+    <hr>
+    <MultipleChoiceControl :values="values" v-model="multi" />
+    <hr>
+    <span @click="toggle">Spoiler: </span>
+    <span v-show="isOpen">Lorem ipsum dolor sit amet.</span>
   </div>
 </template>
 
 <script lang="ts">
-import Select from './components/Select.vue'
-import { reactive, watch } from 'vue'
+import { reactive, watch, ref } from 'vue'
+import SingleChoiceControl from './components/SingleChoiceControl.vue'
+import MultipleChoiceControl from './components/MultipleChoiceControl.vue'
+import useToggle, { UseToggleReturnValue } from './use/toggle'
 
 export default {
   name: 'App',
-  components: { Select },
+  components: {
+    SingleChoiceControl,
+    MultipleChoiceControl,
+  },
 
   setup () {
-    const state = reactive({ current: ['foo', 'tri'] })
     const values = ['foo', 'bar', 'baz', 'tri']
+    const single = ref('bar')
+    const multi = ref(['tri', 'baz'])
+    const { toggle, isOpen }: UseToggleReturnValue = useToggle()
 
-    return { state, values }
+    return { values, single, multi, toggle, isOpen }
   },
 }
 </script>

@@ -1,6 +1,6 @@
 {
-  "name": "vite-test",
-  "version": "0.0.0",
+  "name": "vue-composition-playground",
+  "version": "0.1.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
