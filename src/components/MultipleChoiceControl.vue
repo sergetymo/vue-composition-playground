@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watchEffect } from 'vue'
+import { defineComponent, computed, watchEffect, watch } from 'vue'
 import useChoice, { UseChoiceReturnValue } from './../use/choice'
 
 interface Props {
@@ -41,6 +41,12 @@ export default defineComponent({
       choose,
       choice,
     }: UseChoiceReturnValue = useChoice(props.values, props.modelValue)
+
+    watch(props, (newValue) => {
+      const update = useChoice(newValue.values, newValue.modelValue)
+      // this went wrong:
+      // options.value = update.options.value
+    })
 
     watchEffect(() => emit('update:modelValue', choice.value))
 
